@@ -4,12 +4,18 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectDatabase } from "./config/database.js";
 
+import userRoutes from "./route/user.route.js";
+
 const app = express(); 
 const PORT = process.env.PORT || 3000; 
 
 app.use(cors());
 app.use(express.json()); 
 
+//route
+app.use("/api/user", userRoutes);
+
+// Khởi động server sau khi kết nối Database thành công
 const startServer = async () => {
   await connectDatabase();
 
