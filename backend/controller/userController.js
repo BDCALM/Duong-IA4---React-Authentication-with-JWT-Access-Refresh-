@@ -105,6 +105,24 @@ class UsersController {
       });
     }
   }
+
+  // [POST] /api/user/login
+  async login(req, res) {
+    try {
+      const user = await UsersService.loginUser(req.body);
+
+      return res.status(200).json({
+        success: true,
+        message: "Login successful",
+        data: user
+      });
+    } catch (error) {
+      return res.status(401).json({
+        success: false,
+        message: error.message
+      });
+    }
+  }
 }
 
 // Export Singleton

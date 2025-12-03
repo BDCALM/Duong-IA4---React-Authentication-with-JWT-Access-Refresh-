@@ -1,5 +1,6 @@
 import UserRepository from "../repository/UsersRepository.js";
 import {hashPassword} from "../helpers/hashingPassword.js";
+import {comparePassword} from "../helpers/comparePassword.js";
 import { isValidEmail } from "../helpers/validationHelper.js";
 
 class UsersService {
@@ -99,6 +100,33 @@ class UsersService {
 
 
     return await UserRepository.delete(id);
+  }
+
+  /**
+   * Đăng nhập user
+   */
+  async loginUser({ email, password }) {
+    if (!email || email.trim() === "") throw new Error("Email is required");
+    if (!password || password.trim() === "") throw new Error("Password is required");
+
+    // Tìm user theo email
+    const users = await UserRepository.findByEmail(email.trim());
+    const user = users.find(u => u.email.toLowerCase() === email.trim().toLowerCase());
+    
+    if (!user) {
+      throw new Error("Invalid email or password");
+    }
+
+    // So sánh mật khẩu
+    const isPasswordValid = await comparePassword(password.trim(), user.password);
+    
+    if (!isPasswordValid) {
+      throw new Error("Invalid email or password");
+    }
+
+    // Không trả về password
+    const { password: _, ...userWithoutPassword } = user;
+    return userWithoutPassword;
   }
 }
 
