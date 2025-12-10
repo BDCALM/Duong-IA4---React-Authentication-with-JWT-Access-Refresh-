@@ -1,20 +1,12 @@
-import axios from 'axios';
-
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL, 
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+import axiosClient from './axiosClient';
 
 export const authApi = {
-  register: async (data) => {
-    const response = await apiClient.post('/api/user/register', data);
-    return response.data;
-  },  
-  // 
-  login: async (data) => {
-    const response = await apiClient.post('/api/user/login', data);
-    return response.data;
-  }
+    login: async (data) => {
+        const response = await axiosClient.post('/api/user/login', data);
+        return response.data;
+    },
+    register: async (data) => {
+        const response = await axiosClient.post('/api/user/register', data);
+        return response.data;
+    }
 };

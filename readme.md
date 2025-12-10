@@ -1,9 +1,46 @@
-# A07 – User Registration API with React Frontend
+# React Authentication with JWT (Access + Refresh Token)
 
-This project delivers a full user registration workflow built with a **ExpressJS backend** and a **React frontend**.  
-It includes secure user creation, form validation, API integration, and a clean UI for both registration and login pages.
+This project is a Single Page Application (SPA) built with React and Node.js that demonstrates a secure authentication flow using **JSON Web Tokens (JWT)**. It implements the "Access Token in Memory, Refresh Token in LocalStorage" pattern to ensure security and seamless user experience.
 
-The backend exposes a `/user/register` endpoint with proper validation, password hashing, and error handling.  
-The frontend provides a responsive, accessible sign-up and login experience using modern React tooling such as **React Hook Form** and **React Query**.
+## Features
 
-This repository serves as a practical exercise in designing a small but complete authentication flow, covering API development, frontend integration, and essential UX considerations.
+- **User Authentication:** Register and Login using Email/Password.
+- **Secure Token Storage:** - Access Token is stored in React State (Memory).
+  - Refresh Token is stored in `localStorage` (persisted).
+- **Silent Refresh:** Axios Interceptors automatically refresh the Access Token when it expires (401 Unauthorized) without logging the user out.
+- **Protected Routes:** Restrict access to specific pages (Dashboard) for authenticated users only.
+- **Persistence:** Keeps the user logged in upon page reload (`F5`) using the Refresh Token.
+
+## Tech Stack
+
+- **Frontend:** React (Vite), React Router DOM, React Query, React Hook Form, Axios.
+- **Backend:** Node.js, Express, JSON Web Token (jsonwebtoken).
+- **Database:** MongoDB (implied).
+
+---
+
+## Setup & Installation
+
+### 1. Prerequisites
+Make sure you have installed:
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [MongoDB](https://www.mongodb.com/) (Local or Atlas)
+
+### 2. Backend Setup
+Navigate to the backend folder and install dependencies:
+
+```bash
+cd backend
+npm install
+node server.js  // to run backend
+```
+### Create a .env file
+```bash
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+ACCESS_TOKEN_SECRET=your_random_access_secret_key
+REFRESH_TOKEN_SECRET=your_random_refresh_secret_key
+ACCESS_TOKEN_LIFE=15s
+REFRESH_TOKEN_LIFE=7d
+```
+
