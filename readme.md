@@ -52,7 +52,7 @@ REFRESH_TOKEN_LIFE=7d
 ### 3. Front end setup
 
 #### Create .env file
-VITE_API_URL=http://localhost:5000
+VITE_API_URL= https://duong-ia4-react-authentication-with-jwt.onrender.com
 
 ```bash
 cd frontend

@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Danh sách các domain được phép truy cập
 const allowedOrigins = [
   'http://localhost:5173', // Cho phép Localhost (để bạn test ở máy)
-  'https://ia-03-user-registration-api-with-re-seven.vercel.app' // Cho phép Vercel (BỎ dấu / ở cuối)
+  'https://duong-ia-4-react-authentication-wit.vercel.app' // Cho phép Vercel (BỎ dấu / ở cuối)
 ];
 
 app.use(cors({
