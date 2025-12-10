@@ -34,13 +34,31 @@ cd backend
 npm install
 node server.js  // to run backend
 ```
-### Create a .env file
+#### Create a .env file
 ```bash
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-ACCESS_TOKEN_SECRET=your_random_access_secret_key
-REFRESH_TOKEN_SECRET=your_random_refresh_secret_key
-ACCESS_TOKEN_LIFE=15s
+ File: .env 
+PORT=3000 
+
+SUPABASE_URL=https://zatjdwsymnwgbauayyxl.supabase.co
+
+SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InphdGpkd3N5bW53Z2JhdWF5eXhsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NDY4OTYyMCwiZXhwIjoyMDgwMjY1NjIwfQ.0lDLgsTFUsPUpi3zIaPo26dDzT2sXogWduwLprgiyAE
+#for access token and refresh token
+ACCESS_TOKEN_SECRET=chuoi_bi_mat_access
+REFRESH_TOKEN_SECRET=chuoi_bi_mat_refresh
+ACCESS_TOKEN_LIFE=15s 
 REFRESH_TOKEN_LIFE=7d
 ```
+
+### 3. Front end setup
+
+#### Create .env file
+VITE_API_URL=http://localhost:5000
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+
 
