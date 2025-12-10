@@ -18,6 +18,9 @@ router.get('/:id', (req, res) => UsersController.getById(req, res));
 router.post('/register', (req, res) => UsersController.create(req, res));
 // Đăng nhập (POST /api/user/login)
 router.post('/login', (req, res) => UsersController.login(req, res));
+// [THÊM] Route refresh token
+router.post('/refresh-token', (req, res) => UsersController.refreshToken(req, res));
+
 
 // Cập nhật (PUT /api/user/:id)
 router.put('/:id', (req, res) => UsersController.update(req, res));

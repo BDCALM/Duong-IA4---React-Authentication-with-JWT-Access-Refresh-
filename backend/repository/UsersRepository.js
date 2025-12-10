@@ -19,5 +19,13 @@ class UserRepository extends BaseRepository {
     if (error) throw new Error(`FindByEmail failed: ${error.message}`);
     return data || [];
   }
+  async findByRefreshToken(refreshToken) {
+    const { data, error } = await supabase
+      .from(this.tableName)
+      .select("*")
+      .eq('refresh_token', refreshToken);
+    if (error) throw new Error(`FindByRefreshToken failed: ${error.message}`);
+    return data || [];
+  }
 }
 export default new UserRepository();

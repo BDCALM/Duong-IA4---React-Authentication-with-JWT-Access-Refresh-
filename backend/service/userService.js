@@ -102,6 +102,22 @@ class UsersService {
     return await UserRepository.delete(id);
   }
 
+  // Hàm cập nhật Refresh Token vào DB
+  async updateRefreshToken(userId, refreshToken) {
+    // Gọi repository để update cột refresh_token
+    // Lưu ý: Cấu trúc object này phụ thuộc vào hàm update của Repository bên bạn
+    return await UserRepository.update(userId, { refresh_token: refreshToken });
+  }
+
+  // [THÊM MỚI] Hàm tìm user bằng Refresh Token (Dùng cho chức năng refresh)
+  async getUserByRefreshToken(refreshToken) {
+      // Logic này cần bạn tự implement trong Repository: findOne({ refresh_token: ... })
+      // Nếu Repository chưa hỗ trợ tìm theo field tùy ý, bạn có thể phải lấy user bằng ID sau khi decode token
+      // Tuy nhiên, tốt nhất là check xem token trong DB có khớp với token gửi lên không
+      
+      // Tạm thời giả định bạn sẽ check thủ công ở Controller sau khi lấy user by ID
+      return await UserRepository.findByRefreshToken(refreshToken);
+  }
   /**
    * Đăng nhập user
    */

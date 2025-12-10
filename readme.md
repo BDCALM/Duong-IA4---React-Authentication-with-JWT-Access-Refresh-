@@ -1,4 +1,4 @@
-# A03 – User Registration API with React Frontend
+# A07 – User Registration API with React Frontend
 
 This project delivers a full user registration workflow built with a **ExpressJS backend** and a **React frontend**.  
 It includes secure user creation, form validation, API integration, and a clean UI for both registration and login pages.
